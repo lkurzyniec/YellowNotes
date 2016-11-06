@@ -7,6 +7,7 @@ namespace YellowNotes.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            //config.Filters.Add(new Attributes.ValidateModelStateAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
