@@ -2,10 +2,19 @@
 
 namespace YellowNotes.Dto
 {
+    /// <summary>
+    /// Note object
+    /// </summary>
     public class NoteDto : DtoBase
     {
+        /// <summary>
+        /// Title of Note
+        /// </summary>
         public string Title { get; set; }
 
+        /// <summary>
+        /// Content of Note
+        /// </summary>
         [Required]
         public string Content { get; set; }
 
