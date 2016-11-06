@@ -7,11 +7,18 @@ using YellowNotes.Dto;
 
 namespace YellowNotes.Api.Controllers
 {
+    /// <summary>
+    /// The Notes instance resource
+    /// </summary>
     [ValidateModelState]
     [SimpleAuthorize(Devices = "iOS")]
     [RoutePrefix("api/good-notes")]
     public class GoodNotesController : NotesControllerBase
     {
+        /// <summary>
+        /// Returns a list of the Note objects
+        /// </summary>
+        /// <returns>List of Note objects</returns>
         [AllowAnonymous]
         [HttpGet, Route("")]
         [ResponseType(typeof(IEnumerable<NoteDto>))]
@@ -20,6 +27,11 @@ namespace YellowNotes.Api.Controllers
             return Ok(Notes.Values);
         }
 
+        /// <summary>
+        /// Returns a representation of the Note object
+        /// </summary>
+        /// <param name="id">Note ID</param>
+        /// <returns>Note object</returns>
         [AllowAnonymous]
         [HttpGet, Route("{id}", Name = "GetNote")]
         [ResponseType(typeof(NoteDto))]
@@ -33,6 +45,11 @@ namespace YellowNotes.Api.Controllers
             return Ok(Notes[id]);
         }
 
+        /// <summary>
+        /// Create new Note
+        /// </summary>
+        /// <param name="note">Note object</param>
+        /// <returns>Newly created Note</returns>
         [HttpPost, Route("")]
         public IHttpActionResult Post([FromBody]NoteDto note)
         {
@@ -44,6 +61,12 @@ namespace YellowNotes.Api.Controllers
             return CreatedAtRoute("GetNote", new {id = note.Id}, note);
         }
 
+        /// <summary>
+        /// Update existing Note
+        /// </summary>
+        /// <param name="id">Note ID</param>
+        /// <param name="note">Note object</param>
+        /// <returns></returns>
         [HttpPut, Route("{id}")]
         public IHttpActionResult Put(int id, [FromBody]NoteDto note)
         {
@@ -59,6 +82,11 @@ namespace YellowNotes.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Delete existing Note
+        /// </summary>
+        /// <param name="id">Note ID</param>
+        /// <returns></returns>
         [HttpDelete, Route("{id}")]
         public IHttpActionResult Delete(int id)
         {
