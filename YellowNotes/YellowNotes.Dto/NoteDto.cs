@@ -8,5 +8,8 @@ namespace YellowNotes.Dto
 
         [Required]
         public string Content { get; set; }
+
+        [Range(0, 5)]
+        public int Rank { get; set; }
     }
 }
