@@ -8,12 +8,14 @@ namespace YellowNotes.Api.Controllers
     public class BadNotesController : NotesControllerBase
     {
         // GET: api/BadNotes
+        [AllowAnonymous]
         public IEnumerable<NoteDto> Get()
         {
             return Notes.Values;
         }
 
         // GET: api/BadNotes/5
+        [AllowAnonymous]
         public NoteDto Get(int id)
         {
             if (Notes.ContainsKey(id))
@@ -34,7 +36,7 @@ namespace YellowNotes.Api.Controllers
 
             int maxId = Notes.Keys.Max();
             note.Id = ++maxId;
-            Notes.Add(maxId, note);
+            Notes.TryAdd(maxId, note);
         }
 
         // PUT: api/BadNotes/5
@@ -45,14 +47,15 @@ namespace YellowNotes.Api.Controllers
                 return;
             }
 
-            if (!Notes.ContainsKey(id))
+            NoteDto dbNote;
+            if (!Notes.TryGetValue(id, out dbNote))
             {
                 return;
             }
 
-            var dbNote = Notes[id];
             dbNote.Title = note.Title;
             dbNote.Content = note.Content;
+            dbNote.Rank = note.Rank;
         }
 
         // DELETE: api/BadNotes/5
@@ -60,7 +63,8 @@ namespace YellowNotes.Api.Controllers
         {
             if (Notes.ContainsKey(id))
             {
-                Notes.Remove(id);
+                NoteDto dbNote;
+                Notes.TryRemove(id, out dbNote);
             }
         }
     }
