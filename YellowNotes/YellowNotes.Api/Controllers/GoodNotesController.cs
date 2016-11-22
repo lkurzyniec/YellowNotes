@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -11,6 +12,7 @@ namespace YellowNotes.Api.Controllers
     [RoutePrefix("api/good-notes")]
     public class GoodNotesController : NotesControllerBase
     {
+        [AllowAnonymous]
         [HttpGet, Route("")]
         [ResponseType(typeof(IEnumerable<NoteDto>))]
         public IHttpActionResult Get()
@@ -18,6 +20,7 @@ namespace YellowNotes.Api.Controllers
             return Ok(Notes.Values);
         }
 
+        [AllowAnonymous]
         [HttpGet, Route("{id}", Name = "GetNote")]
         [ResponseType(typeof(NoteDto))]
         public IHttpActionResult GetNote(int id)
@@ -35,7 +38,7 @@ namespace YellowNotes.Api.Controllers
         {
             int maxId = Notes.Keys.Max();
             note.Id = ++maxId;
-            Notes.Add(maxId, note);
+            Notes.TryAdd(maxId, note);
 
             return CreatedAtRoute("GetNote", new {id = note.Id}, note);
         }
@@ -43,14 +46,15 @@ namespace YellowNotes.Api.Controllers
         [HttpPut, Route("{id}")]
         public IHttpActionResult Put(int id, [FromBody]NoteDto note)
         {
-            if (!Notes.ContainsKey(id))
+            NoteDto dbNote;
+            if (!Notes.TryGetValue(id, out dbNote))
             {
                 return NotFound();
             }
-
-            var dbNote = Notes[id];
+            
             dbNote.Title = note.Title;
             dbNote.Content = note.Content;
+            dbNote.Rank = note.Rank;
             return Ok();
         }
 
@@ -61,8 +65,9 @@ namespace YellowNotes.Api.Controllers
             {
                 return NotFound();
             }
-
-            Notes.Remove(id);
+            
+            NoteDto dbNote;
+            Notes.TryRemove(id, out dbNote);
             return Ok();
         }
     }
