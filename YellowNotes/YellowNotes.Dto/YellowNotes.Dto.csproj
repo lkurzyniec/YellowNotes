@@ -39,6 +39,7 @@
     <Compile Include="DtoBase.cs" />
     <Compile Include="NoteDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefreshTokenDto.cs" />
     <Compile Include="UserDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
