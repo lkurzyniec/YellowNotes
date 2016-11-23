@@ -1,5 +1,7 @@
-﻿using System.Security.Claims;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using YellowNotes.Api.Interfaces;
 using YellowNotes.Dto;
@@ -17,6 +19,9 @@ namespace YellowNotes.Api.Providers
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
+            var deviceId = context.Parameters.Get("device");
+            context.OwinContext.Set("device", deviceId);
+
             context.Validated();
         }
 
@@ -24,6 +29,13 @@ namespace YellowNotes.Api.Providers
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             
+            string device = context.OwinContext.Get<string>("device");
+            if (!ValidateDevice(device))
+            {
+                context.SetError("invalid_device", "device must be sent");
+                return;
+            }
+
             UserDto user;
             if (!_authService.AuthenticateUser(context.UserName, context.Password, out user))
             {
@@ -33,8 +45,28 @@ namespace YellowNotes.Api.Providers
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+            identity.AddClaim(new Claim(ApiConstants.ClaimDevice, device));
 
-            context.Validated(identity);
+            var props = new AuthenticationProperties(new Dictionary<string, string>
+            {
+                {"fullname", user.FullName}
+            });
+
+            var ticket = new AuthenticationTicket(identity, props);
+            context.Validated(ticket);
+        }
+
+        private static bool ValidateDevice(string device)
+        {
+            return !string.IsNullOrWhiteSpace(device);
+        }
+
+        public override async Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            foreach (var property in context.Properties.Dictionary)
+            {
+                context.AdditionalResponseParameters.Add(property.Key, property.Value);
+            }
         }
     }
 }
