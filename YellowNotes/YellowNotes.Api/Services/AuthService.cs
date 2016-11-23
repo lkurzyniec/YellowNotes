@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+﻿using System.Collections.Generic;
 using YellowNotes.Api.Interfaces;
 using YellowNotes.Dto;
 
@@ -6,8 +6,8 @@ namespace YellowNotes.Api.Services
 {
     public class AuthService : IAuthService
     {
-        private static readonly ConcurrentDictionary<string, UserDto> Users =
-            new ConcurrentDictionary<string, UserDto>
+        private static readonly Dictionary<string, UserDto> Users =
+            new Dictionary<string, UserDto>
             {
                 ["lkurzyniec"] = new UserDto { FirstName = "Łukasz", LastName = "Kurzyniec", UserName = "lkurzyniec", Password = "wieza123"},
                 ["jkowalski"] = new UserDto { FirstName = "Jan", LastName = "Kowalski", UserName = "jkowalski", Password = "test123"},

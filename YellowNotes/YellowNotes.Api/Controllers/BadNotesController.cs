@@ -36,7 +36,7 @@ namespace YellowNotes.Api.Controllers
 
             int maxId = Notes.Keys.Max();
             note.Id = ++maxId;
-            Notes.TryAdd(maxId, note);
+            Notes.Add(maxId, note);
         }
 
         // PUT: api/BadNotes/5
@@ -63,8 +63,7 @@ namespace YellowNotes.Api.Controllers
         {
             if (Notes.ContainsKey(id))
             {
-                NoteDto dbNote;
-                Notes.TryRemove(id, out dbNote);
+                Notes.Remove(id);
             }
         }
     }

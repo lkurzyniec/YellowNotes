@@ -116,8 +116,11 @@
     <Compile Include="Controllers\BadNotesController.cs" />
     <Compile Include="Controllers\NotesControllerBase.cs" />
     <Compile Include="Interfaces\IAuthService.cs" />
+    <Compile Include="Interfaces\ITokenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Providers\SimpleRefreshTokenProvider.cs" />
+    <Compile Include="Services\TokenService.cs" />
     <Compile Include="Services\AuthService.cs" />
   </ItemGroup>
   <ItemGroup>
