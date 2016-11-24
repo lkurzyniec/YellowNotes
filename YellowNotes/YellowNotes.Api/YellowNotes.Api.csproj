@@ -111,6 +111,7 @@
     <Compile Include="ApiConstants.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\SimpleAuthorizeAttribute.cs" />
     <Compile Include="Attributes\ValidateModelStateAttribute.cs" />
     <Compile Include="Controllers\GoodNotesController.cs" />
     <Compile Include="Controllers\BadNotesController.cs" />
