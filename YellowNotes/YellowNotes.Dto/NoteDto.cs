@@ -11,5 +11,7 @@ namespace YellowNotes.Dto
 
         [Range(0, 5)]
         public int Rank { get; set; }
+
+        public string CreatedAt { get; set; }
     }
 }
