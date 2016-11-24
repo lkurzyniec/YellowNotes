@@ -38,6 +38,7 @@ namespace YellowNotes.Api.Controllers
         {
             int maxId = Notes.Keys.Max();
             note.Id = ++maxId;
+            note.CreatedAt = Device;
             Notes.Add(maxId, note);
 
             return CreatedAtRoute("GetNote", new {id = note.Id}, note);

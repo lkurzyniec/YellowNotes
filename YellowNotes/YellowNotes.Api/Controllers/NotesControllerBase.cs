@@ -17,8 +17,8 @@ namespace YellowNotes.Api.Controllers
         protected static readonly Dictionary<int, NoteDto> Notes =
             new Dictionary<int, NoteDto>
             {
-                [1] = new NoteDto {Id = 1, Title = "Title 1", Content = "Content 1"},
-                [2] = new NoteDto {Id = 2, Title = "Title 2", Content = "Content 2"},
+                [1] = new NoteDto {Id = 1, Title = "Title 1", Content = "Content 1", CreatedAt = "DB"},
+                [2] = new NoteDto {Id = 2, Title = "Title 2", Content = "Content 2", CreatedAt = "DB"},
             };
 
         protected string Device => _claimsIdentity.IsAuthenticated
