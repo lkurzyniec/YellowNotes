@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using YellowNotes.Api.Attributes;
 
 namespace YellowNotes.Api
 {
@@ -7,7 +8,7 @@ namespace YellowNotes.Api
         public static void Register(HttpConfiguration config)
         {
             //config.Filters.Add(new Attributes.ValidateModelStateAttribute());
-            config.Filters.Add(new AuthorizeAttribute());
+            config.Filters.Add(new SimpleAuthorizeAttribute());
 
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(

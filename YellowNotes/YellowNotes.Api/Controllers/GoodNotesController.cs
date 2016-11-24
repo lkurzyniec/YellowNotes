@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -9,6 +8,7 @@ using YellowNotes.Dto;
 namespace YellowNotes.Api.Controllers
 {
     [ValidateModelState]
+    [SimpleAuthorize(Devices = "iOS")]
     [RoutePrefix("api/good-notes")]
     public class GoodNotesController : NotesControllerBase
     {
