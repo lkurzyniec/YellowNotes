@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.Infrastructure;
 using YellowNotes.Api.Interfaces;
+using YellowNotes.Api.Utils;
 using YellowNotes.Dto;
 
 namespace YellowNotes.Api.Providers
@@ -19,15 +18,15 @@ namespace YellowNotes.Api.Providers
 
         public override async Task CreateAsync(AuthenticationTokenCreateContext context)
         {
-            string userName = context.Ticket.Identity.FindFirst(ClaimTypes.Name).Value;
+            string userName = context.Ticket.Identity.Name;
 
             string token = Guid.NewGuid().ToString("n");
             var refreshToken = new RefreshTokenDto
             {
                 UserName = userName,
-                Token = GetHash(token),
+                Token = HashProvider.Get(token),
                 IssuedDate = DateTime.UtcNow,
-                ExpiresDate = DateTime.UtcNow.AddMinutes(5)
+                ExpiresDate = DateTime.UtcNow.AddMinutes(AppConfiguration.RefreshTokenExpireTimeInMin)
             };
 
             context.Ticket.Properties.IssuedUtc = refreshToken.IssuedDate;
@@ -43,7 +42,7 @@ namespace YellowNotes.Api.Providers
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             
-            var token = GetHash(context.Token);
+            var token = HashProvider.Get(context.Token);
 
             var refreshToken = _tokenService.GetRefreshToken(token);
             if (refreshToken != null)
@@ -52,14 +51,6 @@ namespace YellowNotes.Api.Providers
                 _tokenService.RemoveRefreshToken(token);
                 _tokenService.RemoveExpiredRefreshTokens(refreshToken.UserName);
             }
-        }
-
-        private static string GetHash(string input)
-        {
-            HashAlgorithm hashAlgorithm = new SHA256CryptoServiceProvider();
-            byte[] byteValue = System.Text.Encoding.UTF8.GetBytes(input);
-            byte[] byteHash = hashAlgorithm.ComputeHash(byteValue);
-            return Convert.ToBase64String(byteHash);
         }
     }
 }

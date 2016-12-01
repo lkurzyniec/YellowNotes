@@ -56,17 +56,17 @@ namespace YellowNotes.Api.Providers
             context.Validated(ticket);
         }
 
-        private static bool ValidateDevice(string device)
-        {
-            return !string.IsNullOrWhiteSpace(device);
-        }
-
         public override async Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (var property in context.Properties.Dictionary)
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
+        }
+
+        private static bool ValidateDevice(string device)
+        {
+            return !string.IsNullOrWhiteSpace(device);
         }
     }
 }

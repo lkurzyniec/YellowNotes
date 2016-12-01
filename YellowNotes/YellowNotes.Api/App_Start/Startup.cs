@@ -5,6 +5,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using YellowNotes.Api.Providers;
 using YellowNotes.Api.Services;
+using YellowNotes.Api.Utils;
 
 [assembly: OwinStartup(typeof(YellowNotes.Api.Startup))]
 namespace YellowNotes.Api
@@ -26,7 +27,7 @@ namespace YellowNotes.Api
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(AppConfiguration.AccessTokenExpireTimeInMin),
                 Provider = new SimpleAuthorizationServerProvider(new AuthService()),
                 RefreshTokenProvider = new SimpleRefreshTokenProvider(new TokenService())
             };
