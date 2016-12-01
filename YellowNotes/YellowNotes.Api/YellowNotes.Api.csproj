@@ -123,6 +123,8 @@
     <Compile Include="Providers\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Services\TokenService.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Utils\AppConfiguration.cs" />
+    <Compile Include="Utils\HashProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -133,9 +135,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\YellowNotes.Dto\YellowNotes.Dto.csproj">
       <Project>{47835756-B392-40C5-8C53-1887652D5E7C}</Project>
