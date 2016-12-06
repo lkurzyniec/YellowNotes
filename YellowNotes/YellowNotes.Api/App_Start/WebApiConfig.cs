@@ -7,7 +7,7 @@ namespace YellowNotes.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            //config.Filters.Add(new Attributes.ValidateModelStateAttribute());
+            config.Filters.Add(new CheckModelForNullAttribute());
             config.Filters.Add(new SimpleAuthorizeAttribute());
 
             config.MapHttpAttributeRoutes();
