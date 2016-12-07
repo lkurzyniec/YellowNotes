@@ -1,7 +1,7 @@
 # YellowNotes
 Sample ASP.NET Web API project.
 
-You can find here:
+## Table of contents
 1. [The basics of API (CRUD)](#the-basics-of-api)
 2. [Validation](#validation)
 3. [Authentication and authorization](#authentication-and-authorization)
