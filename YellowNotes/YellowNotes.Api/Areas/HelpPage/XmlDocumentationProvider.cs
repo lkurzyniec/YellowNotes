@@ -30,7 +30,7 @@ namespace YellowNotes.Api.Areas.HelpPage
         public XmlDocumentationProvider(string xmlDocFilesPath)
         {
             XDocument finalDoc = null;
-            foreach (string file in Directory.GetFiles(xmlDocFilesPath, "*.xml"))
+            foreach (string file in Directory.GetFiles(xmlDocFilesPath, "YellowNotes.*.xml", SearchOption.TopDirectoryOnly))
             {
                 if (finalDoc == null)
                 {
