@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Routing;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -14,6 +16,10 @@ namespace YellowNotes.Api
     {
         public void Configuration(IAppBuilder app)
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
             ConfigureOAuth(app);
