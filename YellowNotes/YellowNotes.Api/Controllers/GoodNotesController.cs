@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using YellowNotes.Api.Attributes;
@@ -21,6 +22,7 @@ namespace YellowNotes.Api.Controllers
         /// <returns>List of Note objects</returns>
         [AllowAnonymous]
         [HttpGet, Route("")]
+        [ResponseHttpStatusCode(HttpStatusCode.OK)]
         [ResponseType(typeof(IEnumerable<NoteDto>))]
         public IHttpActionResult Get()
         {
@@ -34,6 +36,7 @@ namespace YellowNotes.Api.Controllers
         /// <returns>Note object</returns>
         [AllowAnonymous]
         [HttpGet, Route("{id}", Name = "GetNote")]
+        [ResponseHttpStatusCode(HttpStatusCode.OK, HttpStatusCode.NotFound)]
         [ResponseType(typeof(NoteDto))]
         public IHttpActionResult GetNote(int id)
         {
@@ -51,9 +54,10 @@ namespace YellowNotes.Api.Controllers
         /// <param name="note">Note object</param>
         /// <returns>Newly created Note</returns>
         [HttpPost, Route("")]
+        [ResponseHttpStatusCode(HttpStatusCode.Created)]
         public IHttpActionResult Post([FromBody]NoteDto note)
         {
-            int maxId = Notes.Keys.Max();
+            int maxId = Notes.Keys.Count > 0 ? Notes.Keys.Max() : 0;
             note.Id = ++maxId;
             note.CreatedAt = Device;
             Notes.Add(maxId, note);
@@ -68,6 +72,7 @@ namespace YellowNotes.Api.Controllers
         /// <param name="note">Note object</param>
         /// <returns></returns>
         [HttpPut, Route("{id}")]
+        [ResponseHttpStatusCode(HttpStatusCode.OK, HttpStatusCode.NotFound)]
         public IHttpActionResult Put(int id, [FromBody]NoteDto note)
         {
             NoteDto dbNote;
@@ -88,6 +93,7 @@ namespace YellowNotes.Api.Controllers
         /// <param name="id">Note ID</param>
         /// <returns></returns>
         [HttpDelete, Route("{id}")]
+        [ResponseHttpStatusCode(HttpStatusCode.OK, HttpStatusCode.NotFound)]
         public IHttpActionResult Delete(int id)
         {
             if (!Notes.ContainsKey(id))

@@ -21,7 +21,7 @@ namespace YellowNotes.Api.Areas.HelpPage.ModelDescriptions
         // Modify this to support more data annotation attributes.
         private readonly IDictionary<Type, Func<object, string>> AnnotationTextGenerator = new Dictionary<Type, Func<object, string>>
         {
-            { typeof(RequiredAttribute), a => "Required" },
+            { typeof(RequiredAttribute), a => "<b>Required</b>" },
             { typeof(RangeAttribute), a =>
                 {
                     RangeAttribute range = (RangeAttribute)a;

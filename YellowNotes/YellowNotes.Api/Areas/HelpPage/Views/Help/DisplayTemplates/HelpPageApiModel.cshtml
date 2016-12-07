@@ -7,7 +7,7 @@
 @{
     ApiDescription description = Model.ApiDescription;
 }
-<h1>@description.HttpMethod.Method @description.RelativePath</h1>
+<h1>@description.HttpMethod.Method @description.RelativePath.ToLower()</h1>
 <div>
     <p>@description.Documentation</p>
 
@@ -40,6 +40,21 @@
     }
 
     <h2>Response Information</h2>
+
+    <h3>Status Codes</h3>
+    @if (Model.HttpStatusCodes.Length > 0)
+    {
+        <ul>
+            @foreach (var status in Model.HttpStatusCodes.OrderBy(c => c))
+            {
+                <li><b>@((int)status)</b> - @status.ToString()</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <span>No HTTP Status Codes info</span>
+    }
 
     <h3>Resource Description</h3>
 
