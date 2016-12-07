@@ -6,6 +6,8 @@ Sample ASP.NET Web API project.
 2. [Validation](#validation)
 3. [Authentication and authorization](#authentication-and-authorization)
 4. [Documentation](#documentation)
+5. [Examples](#examples)
+6. [Useful links](#useful-links)
 
 ---
 
@@ -31,9 +33,14 @@ Sample ASP.NET Web API project.
 ## Documentation
 * Help Pages (via [Microsoft.AspNet.WebApi.HelpPage](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.HelpPage/) nuget package)
 * Multiple XML documentation (XML comments beyond the main project)
+* HTTP Status Codes (attribute to generate HTTP response codes in documentation) ([ResponseHttpStatusCodeAttribute](YellowNotes/YellowNotes.Api/Attributes/ResponseHttpStatusCodeAttribute.cs))
 
 ---
 
-### Useful links:
+## Examples
+
+---
+
+## Useful links
 * http://www.restapitutorial.com/httpstatuscodes.html
 * http://racksburg.com/choosing-an-http-status-code

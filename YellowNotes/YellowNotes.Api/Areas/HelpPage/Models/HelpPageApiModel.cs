@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
 using YellowNotes.Api.Areas.HelpPage.ModelDescriptions;
@@ -83,6 +84,11 @@ namespace YellowNotes.Api.Areas.HelpPage.Models
         /// Gets the error messages associated with this model.
         /// </summary>
         public Collection<string> ErrorMessages { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the HTTP Status Codes of method
+        /// </summary>
+        public HttpStatusCode[] HttpStatusCodes { get; set; } = new HttpStatusCode[0];
 
         private static IList<ParameterDescription> GetParameterDescriptions(ModelDescription modelDescription)
         {

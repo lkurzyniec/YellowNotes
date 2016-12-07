@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
@@ -13,6 +14,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using YellowNotes.Api.Areas.HelpPage.ModelDescriptions;
 using YellowNotes.Api.Areas.HelpPage.Models;
+using YellowNotes.Api.Attributes;
 
 namespace YellowNotes.Api.Areas.HelpPage
 {
@@ -248,7 +250,16 @@ namespace YellowNotes.Api.Areas.HelpPage
             GenerateResourceDescription(apiModel, modelGenerator);
             GenerateSamples(apiModel, sampleGenerator);
 
+            GenerateResponseHttpStatusCodes(apiModel, apiDescription);
+
             return apiModel;
+        }
+
+        private static void GenerateResponseHttpStatusCodes(HelpPageApiModel apiModel, ApiDescription apiDescription)
+        {
+            var customAttribute =
+                apiDescription.ActionDescriptor.GetCustomAttributes<ResponseHttpStatusCodeAttribute>().FirstOrDefault();
+            apiModel.HttpStatusCodes = customAttribute?.HttpStatusCodes ?? new HttpStatusCode[0];
         }
 
         private static void GenerateUriParameters(HelpPageApiModel apiModel, ModelDescriptionGenerator modelGenerator)
