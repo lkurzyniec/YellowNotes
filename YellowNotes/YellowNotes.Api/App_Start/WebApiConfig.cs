@@ -9,6 +9,7 @@ namespace YellowNotes.Api
         {
             config.Filters.Add(new CheckModelForNullAttribute());
             config.Filters.Add(new SimpleAuthorizeAttribute());
+            config.Filters.Add(new RequestExceptionAttribute());
 
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
