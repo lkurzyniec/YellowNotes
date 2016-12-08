@@ -28,7 +28,7 @@
                         {
                             foreach (var annotation in parameter.Annotations)
                             {
-                                <p>@annotation.Documentation</p>
+                                <p>@Html.Raw(annotation.Documentation)</p>
                             }
                         }
                         else
