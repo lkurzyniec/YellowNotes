@@ -9,6 +9,7 @@ namespace YellowNotes.Api.Areas.HelpPage.Controllers
     /// <summary>
     /// The controller that will handle requests for the help page.
     /// </summary>
+    [OutputCache(CacheProfile = "HelpPagesCache")]
     public class HelpController : Controller
     {
         private const string ErrorViewName = "Error";
