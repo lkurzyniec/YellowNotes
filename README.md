@@ -34,6 +34,7 @@ Sample ASP.NET Web API project.
 * Help Pages (via [Microsoft.AspNet.WebApi.HelpPage](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.HelpPage/) nuget package)
 * Multiple XML documentation (XML comments beyond the main project)
 * HTTP Status Codes (attribute to generate HTTP response codes in documentation) ([ResponseHttpStatusCodeAttribute](YellowNotes/YellowNotes.Api/Attributes/ResponseHttpStatusCodeAttribute.cs))
+* Output Cache profile
 
 ---
 
