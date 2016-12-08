@@ -5,9 +5,10 @@ Sample ASP.NET Web API project.
 1. [The basics of API (CRUD)](#the-basics-of-api)
 2. [Validation](#validation)
 3. [Authentication and authorization](#authentication-and-authorization)
-4. [Documentation](#documentation)
-5. [Examples](#examples)
-6. [Useful links](#useful-links)
+4. [Exceptions](#exceptions)
+5. [Documentation](#documentation)
+6. [Examples](#examples)
+7. [Useful links](#useful-links)
 
 ---
 
@@ -29,6 +30,9 @@ Sample ASP.NET Web API project.
 * Custom claim
 * Refresh Token ([SimpleRefreshTokenProvider](YellowNotes/YellowNotes.Api/Providers/SimpleRefreshTokenProvider.cs))
 * Custom Authorize attribute ([SimpleAuthorize](YellowNotes/YellowNotes.Api/Attributes/SimpleAuthorizeAttribute.cs))
+
+## Exceptions
+* API exceptions handling ([RequestExceptionAttribute](YellowNotes/YellowNotes.Api/Attributes/RequestExceptionAttribute.cs))
 
 ## Documentation
 * Help Pages (via [Microsoft.AspNet.WebApi.HelpPage](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.HelpPage/) nuget package)
