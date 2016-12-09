@@ -21,7 +21,7 @@ Sample ASP.NET Web API project.
 ## Validation
 * Basic validation (via [DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) attributes)
 * ModelState validation ([ValidateModelStateAttribute](YellowNotes/YellowNotes.Api/Attributes/ValidateModelStateAttribute.cs))
-* Model validation ([CheckModelForNullAttribute](YellowNotes/YellowNotes.Api/Attributes/CheckModelForNullAttribute.cs))
+* Model empty validation ([CheckModelForNullAttribute](YellowNotes/YellowNotes.Api/Attributes/CheckModelForNullAttribute.cs))
 
 ## Authentication and authorization
 * Access Token (OAuth bearer token authentication using Owin middleware) ([SimpleAuthorizationServerProvider](YellowNotes/YellowNotes.Api/Providers/SimpleAuthorizationServerProvider.cs))
@@ -42,7 +42,27 @@ Sample ASP.NET Web API project.
 
 ---
 
-## Examples
+## Samples and Examples
+
+### Token generation
+![Token generation](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-token-generation.png "Token generation")
+
+### Access to resource denied
+![Access denied](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-denied.png "Access denied")
+
+### Access to resource granted
+![Access granted](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-granted.png "Access granted")
+
+### Refresh Token utilise
+![Refresh Token utilise](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-refresh-token.png "Refresh Token utilise")
+
+### Model validation
+![Model empty validation](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-model-empty.png "Model empty validation")
+
+### Documentation Help Pages
+![Help Pages](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-help-pages.png "Help Pages")
+
+![HTTP Status Codes](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-http-statuses.png "HTTP Status Codes")
 
 ---
 

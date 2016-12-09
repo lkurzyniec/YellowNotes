@@ -55,6 +55,7 @@ namespace YellowNotes.Api.Controllers
         /// <returns>Newly created Note</returns>
         [HttpPost, Route("")]
         [ResponseHttpStatusCode(HttpStatusCode.Created)]
+        [ResponseType(typeof(NoteDto))]
         public IHttpActionResult Post([FromBody]NoteDto note)
         {
             int maxId = Notes.Keys.Count > 0 ? Notes.Keys.Max() : 0;
