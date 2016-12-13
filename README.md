@@ -1,5 +1,5 @@
 # YellowNotes
-Sample ASP.NET Web API project.
+Sample ASP.NET Web API project with OAuth authentication and many other extensions.
 
 ## Table of contents
 1. [The basics of API (CRUD)](#the-basics-of-api)
@@ -8,7 +8,8 @@ Sample ASP.NET Web API project.
 4. [Exceptions](#exceptions)
 5. [Documentation](#documentation)
 6. [Examples](#examples)
-7. [Useful links](#useful-links)
+7. [Contributing](#contributing)
+8. [Useful links](#useful-links)
 
 ---
 
@@ -63,6 +64,19 @@ Sample ASP.NET Web API project.
 ![Help Pages](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-help-pages.png "Help Pages")
 
 ![HTTP Status Codes](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-http-statuses.png "HTTP Status Codes")
+
+---
+
+## Contributing
+You are very welcome to submit either issues or pull requests to this repository!
+
+I'm trying to follow GitHub Flow process, so please follow this rules:
+* Make changes on feature branch.
+* Commit messages should be clear and as much as possible descriptive.
+* Rebase if required.
+* Make sure that your code compile and run locally.
+* Push your feature branch to GitHub.
+* Create pull request.
 
 ---
 
