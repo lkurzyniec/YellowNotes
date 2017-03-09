@@ -2,14 +2,14 @@
 Sample ASP.NET Web API project with OAuth authentication and many other extensions.
 
 ## Table of contents
-1. [The basics of API (CRUD)](#the-basics-of-api)
-2. [Validation](#validation)
-3. [Authentication and authorization](#authentication-and-authorization)
-4. [Documentation](#documentation)
-5. [Other](#other)
-6. [Samples and Examples](#samples-and-examples)
-7. [Contributing](#contributing)
-8. [Useful links](#useful-links)
+1. [The basics of API (CRUD)](#1-the-basics-of-api)
+2. [Validation](#2-validation)
+3. [Authentication and authorization](#3-authentication-and-authorization)
+4. [Documentation](#4-documentation)
+5. [Other](#5-other)
+6. [Samples and Examples](#6-samples-and-examples)
+7. [Contributing](#7-contributing)
+8. [Useful links](#8-useful-links)
 
 ---
 
