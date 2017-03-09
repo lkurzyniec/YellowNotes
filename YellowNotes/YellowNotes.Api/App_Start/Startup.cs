@@ -14,15 +14,18 @@ namespace YellowNotes.Api
 {
     public class Startup
     {
+        /// <remarks>Order of methods invocation has matter</remarks>
         public void Configuration(IAppBuilder app)
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            app.UseCors(CorsProvider.GetCorsOptions());
+            ConfigureOAuth(app);
+
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
-            ConfigureOAuth(app);
 
             app.UseWebApi(config);
         }
