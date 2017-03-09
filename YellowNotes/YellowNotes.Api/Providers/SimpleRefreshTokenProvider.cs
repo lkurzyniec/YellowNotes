@@ -40,8 +40,6 @@ namespace YellowNotes.Api.Providers
 
         public override async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-            
             var token = HashProvider.Get(context.Token);
 
             var refreshToken = _tokenService.GetRefreshToken(token);

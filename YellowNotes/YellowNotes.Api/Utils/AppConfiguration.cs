@@ -8,6 +8,8 @@ namespace YellowNotes.Api.Utils
 
         public static int RefreshTokenExpireTimeInMin = GetInt("RefreshTokenExpireTimeInMin", 15);
 
+        public static string CorsPolicyOrigins = GetString("CorsPolicy.Origins", "*");
+
         protected static string GetString(string key, string defaultValue)
         {
             var value = ConfigurationManager.AppSettings[key];
