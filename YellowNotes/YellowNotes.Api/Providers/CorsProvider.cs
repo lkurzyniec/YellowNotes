@@ -10,7 +10,6 @@ namespace YellowNotes.Api.Providers
     {
         private static readonly string _allowedOrgins = AppConfiguration.CorsPolicyOrigins;
         private static readonly CorsPolicy _corsPolicy = new CorsPolicy { AllowAnyMethod = true, AllowAnyHeader = true };
-        private static readonly CorsOptions _corsOptions;
 
         static CorsProvider()
         {
@@ -22,19 +21,17 @@ namespace YellowNotes.Api.Providers
             {
                 ValidateOrgins();
             }
+        }
 
-            _corsOptions = new CorsOptions
+        public static CorsOptions GetCorsOptions()
+        {
+            return new CorsOptions
             {
                 PolicyProvider = new CorsPolicyProvider
                 {
                     PolicyResolver = context => Task.FromResult(_corsPolicy)
                 }
             };
-        }
-
-        public static CorsOptions GetCorsOptions()
-        {
-            return _corsOptions;
         }
 
         /// <remarks>Based on System.Web.Http.Cors.EnableCorsAttribute.ValidateOrigins()</remarks>
