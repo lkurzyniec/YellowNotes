@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using YellowNotes.Api.Interfaces;
+using YellowNotes.Api.Utils;
 using YellowNotes.Dto;
 
 namespace YellowNotes.Api.Providers
@@ -11,14 +12,30 @@ namespace YellowNotes.Api.Providers
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         private readonly IAuthService _authService;
+        private readonly IClientService _clientService;
 
-        public SimpleAuthorizationServerProvider(IAuthService authService)
+        public SimpleAuthorizationServerProvider(IAuthService authService, IClientService clientService)
         {
             _authService = authService;
+            _clientService = clientService;
         }
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
+            string clientId;
+            string clientSecret;
+            //looking in Authorization header using Basic scheme
+            if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
+            {
+                //looking as x-www-form-urlencoded
+                context.TryGetFormCredentials(out clientId, out clientSecret);
+            }
+
+            if (!AuthenticateClient(context, clientId, clientSecret))
+            {
+                return;
+            }
+
             var deviceId = context.Parameters.Get("device");
             context.OwinContext.Set("device", deviceId);
 
@@ -27,6 +44,7 @@ namespace YellowNotes.Api.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+
             string device = context.OwinContext.Get<string>("device");
             if (!ValidateDevice(device))
             {
@@ -35,9 +53,9 @@ namespace YellowNotes.Api.Providers
             }
 
             UserDto user;
-            if (!_authService.AuthenticateUser(context.UserName, context.Password, out user))
+            if (!_authService.AuthenticateUser(context.UserName, HashProvider.Get(context.Password), out user))
             {
-                context.SetError("invalid_grant", "user name or password is incorrect");
+                context.SetError("invalid_grant", "user name or password is invalid");
                 return;
             }
 
@@ -47,10 +65,31 @@ namespace YellowNotes.Api.Providers
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
-                {"fullname", user.FullName}
+                {"fullname", user.FullName},
+                {"as:client_id", context.ClientId},
             });
 
             var ticket = new AuthenticationTicket(identity, props);
+            context.Validated(ticket);
+        }
+
+        public override async Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)
+        {
+            var originalClient = context.Ticket.Properties.Dictionary["as:client_id"];
+            var currentClient = context.ClientId;
+
+            if (originalClient != currentClient)
+            {
+                context.SetError("invalid_client_id", "refresh_token issued by different client_id");
+                return;
+            }
+            
+            var identity = new ClaimsIdentity(context.Ticket.Identity);
+            identity.AddClaim(new Claim("newClaim", "someValue"));
+
+            context.Ticket.Properties.Dictionary.Add("newProp", "newValue");
+
+            var ticket = new AuthenticationTicket(identity, context.Ticket.Properties);
             context.Validated(ticket);
         }
 
@@ -60,6 +99,42 @@ namespace YellowNotes.Api.Providers
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
+        }
+
+        private bool AuthenticateClient(OAuthValidateClientAuthenticationContext context, string clientId, string clientSecret)
+        {
+            if (string.IsNullOrWhiteSpace(clientId))
+            {
+                context.SetError("invalid_client_id", "client_id must be supplied");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(clientSecret))
+            {
+                context.SetError("invalid_client_secret", "client_secret must be supplied");
+                return false;
+            }
+
+            var client = _clientService.GetClient(clientId);
+            if (client == null)
+            {
+                context.SetError("invalid_client_id", "client_id is invalid");
+                return false;
+            }
+
+            if (client.Secret != HashProvider.Get(clientSecret))
+            {
+                context.SetError("invalid_client_secret", "client_secret is invalid");
+                return false;
+            }
+
+            if (!client.Active)
+            {
+                context.SetError("invalid_client", "client is inactive");
+                return false;
+            }
+
+            return true;
         }
 
         private static bool ValidateDevice(string device)
