@@ -1,10 +1,12 @@
-﻿using System;
+using System;
 
-namespace YellowNotes.Dto
+namespace YellowNotes.Api.Models
 {
-    public class RefreshTokenDto
+    public class RefreshTokenModel
     {
         public string UserName { get; set; }
+
+        public string ClientId { get; set; }
 
         public DateTime IssuedDate { get; set; }
 

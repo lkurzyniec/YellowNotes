@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using YellowNotes.Api.Interfaces;
-using YellowNotes.Dto;
+using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Services
 {
     public class TokenService : ITokenService
     {
-        private static readonly List<RefreshTokenDto> RefreshTokens = new List<RefreshTokenDto>();
+        private static readonly List<RefreshTokenModel> RefreshTokens = new List<RefreshTokenModel>();
 
-        public void SaveRefreshToken(RefreshTokenDto refreshToken)
+        public void SaveRefreshToken(RefreshTokenModel refreshToken)
         {
             RefreshTokens.Add(refreshToken);
         }
 
-        public RefreshTokenDto GetRefreshToken(string hashedToken)
+        public RefreshTokenModel GetRefreshToken(string hashedToken)
         {
             return RefreshTokens.SingleOrDefault(rt => rt.Token == hashedToken);
         }

@@ -37,7 +37,7 @@ namespace YellowNotes.Api
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(AppConfiguration.AccessTokenExpireTimeInMin),
-                Provider = new SimpleAuthorizationServerProvider(new AuthService()),
+                Provider = new SimpleAuthorizationServerProvider(new AuthService(), new ClientService()),
                 RefreshTokenProvider = new SimpleRefreshTokenProvider(new TokenService())
             };
 

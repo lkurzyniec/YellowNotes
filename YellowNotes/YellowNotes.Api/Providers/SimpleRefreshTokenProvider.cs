@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.Infrastructure;
 using YellowNotes.Api.Interfaces;
+using YellowNotes.Api.Models;
 using YellowNotes.Api.Utils;
-using YellowNotes.Dto;
 
 namespace YellowNotes.Api.Providers
 {
@@ -19,22 +19,23 @@ namespace YellowNotes.Api.Providers
         public override async Task CreateAsync(AuthenticationTokenCreateContext context)
         {
             string userName = context.Ticket.Identity.Name;
+            string clientId = context.Ticket.Properties.Dictionary["as:client_id"];
 
             string token = Guid.NewGuid().ToString("n");
-            var refreshToken = new RefreshTokenDto
+            var refreshToken = new RefreshTokenModel
             {
+                ClientId = clientId,
                 UserName = userName,
                 Token = HashProvider.Get(token),
+                ProtectedTicket = context.SerializeTicket(),
                 IssuedDate = DateTime.UtcNow,
                 ExpiresDate = DateTime.UtcNow.AddMinutes(AppConfiguration.RefreshTokenExpireTimeInMin)
             };
+            _tokenService.SaveRefreshToken(refreshToken);
 
             context.Ticket.Properties.IssuedUtc = refreshToken.IssuedDate;
             context.Ticket.Properties.ExpiresUtc = refreshToken.ExpiresDate;
 
-            refreshToken.ProtectedTicket = context.SerializeTicket();
-
-            _tokenService.SaveRefreshToken(refreshToken);
             context.SetToken(token);
         }
 
