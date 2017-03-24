@@ -25,7 +25,8 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 * Model empty validation ([CheckModelForNullAttribute](YellowNotes/YellowNotes.Api/Attributes/CheckModelForNullAttribute.cs))
 
 ## 3. Authentication and authorization
-* Access Token (OAuth bearer token authentication using Owin middleware) ([SimpleAuthorizationServerProvider](YellowNotes/YellowNotes.Api/Providers/SimpleAuthorizationServerProvider.cs))
+* Access Token (OAuth bearer token authentication using OWIN middleware) ([SimpleAuthorizationServerProvider](YellowNotes/YellowNotes.Api/Providers/SimpleAuthorizationServerProvider.cs))
+* Client credentials validation
 * Token custom parameter
 * Authentication Ticket custom property
 * Custom claim
@@ -47,7 +48,7 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 ## 6. Samples and Examples
 
 ### Token generation
-![Token generation](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-token-generation.png "Token generation")
+![Token generation](http://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-token-generation.png "Token generation")
 
 ### Access to resource denied
 ![Access denied](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-denied.png "Access denied")
@@ -56,7 +57,7 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 ![Access granted](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-granted.png "Access granted")
 
 ### Refresh Token utilise
-![Refresh Token utilise](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-refresh-token.png "Refresh Token utilise")
+![Refresh Token utilise](http://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-refresh-token.png "Refresh Token utilise")
 
 ### Model validation
 ![Model empty validation](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-model-empty.png "Model empty validation")
