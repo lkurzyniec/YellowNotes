@@ -4,7 +4,7 @@ using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Services
 {
-    public class ClientService : IClientService
+    internal class ClientService : IClientService
     {
         private static readonly Dictionary<string, ClientModel> Clients =
             new Dictionary<string, ClientModel>

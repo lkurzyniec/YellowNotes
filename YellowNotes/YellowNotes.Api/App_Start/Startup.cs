@@ -12,7 +12,7 @@ using YellowNotes.Api.Utils;
 [assembly: OwinStartup(typeof(YellowNotes.Api.Startup))]
 namespace YellowNotes.Api
 {
-    public class Startup
+    internal class Startup
     {
         /// <remarks>Order of methods invocation has matter</remarks>
         public void Configuration(IAppBuilder app)

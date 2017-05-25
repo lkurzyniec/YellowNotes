@@ -3,7 +3,7 @@ using YellowNotes.Api.Attributes;
 
 namespace YellowNotes.Api
 {
-    public static class WebApiConfig
+    internal static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {

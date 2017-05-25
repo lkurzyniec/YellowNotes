@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using YellowNotes.Api.Interfaces;
+using YellowNotes.Api.Models;
 using YellowNotes.Api.Utils;
-using YellowNotes.Dto;
 
 namespace YellowNotes.Api.Providers
 {
-    public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
+    internal class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         private readonly IAuthService _authService;
         private readonly IClientService _clientService;
@@ -44,7 +44,6 @@ namespace YellowNotes.Api.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-
             string device = context.OwinContext.Get<string>("device");
             if (!ValidateDevice(device))
             {
@@ -52,7 +51,7 @@ namespace YellowNotes.Api.Providers
                 return;
             }
 
-            UserDto user;
+            UserModel user;
             if (!_authService.AuthenticateUser(context.UserName, HashProvider.Get(context.Password), out user))
             {
                 context.SetError("invalid_grant", "user name or password is invalid");

@@ -2,7 +2,7 @@
 
 namespace YellowNotes.Api.Interfaces
 {
-    public interface ILogger
+    internal interface ILogger
     {
         void Error(Exception ex, string additionalInfo = null);
     }

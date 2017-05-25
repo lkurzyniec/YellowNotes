@@ -24,7 +24,7 @@ namespace YellowNotes.Api.Controllers
                 [2] = new NoteDto {Id = 2, Title = "Title 2", Content = "Content 2", CreatedAt = "DB"},
             };
 
-        public ILogger Logger { get; }
+        internal ILogger Logger { get; }
 
         protected string Device => _claimsIdentity.IsAuthenticated
             ? _claimsIdentity.FindFirst(ApiConstants.ClaimDevice).Value

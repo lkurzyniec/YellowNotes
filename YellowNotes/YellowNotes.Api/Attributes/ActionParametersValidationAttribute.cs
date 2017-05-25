@@ -7,7 +7,7 @@ using System.Web.Http.Controllers;
 namespace YellowNotes.Api.Attributes
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class ActionParametersValidationAttribute : ValidateModelStateAttribute
+    internal class ActionParametersValidationAttribute : ValidateModelStateAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {

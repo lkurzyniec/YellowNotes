@@ -6,7 +6,7 @@ using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Services
 {
-    public class TokenService : ITokenService
+    internal class TokenService : ITokenService
     {
         private static readonly List<RefreshTokenModel> RefreshTokens = new List<RefreshTokenModel>();
 

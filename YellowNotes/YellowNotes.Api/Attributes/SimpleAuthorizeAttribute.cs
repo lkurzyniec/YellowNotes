@@ -9,7 +9,7 @@ using System.Web.Http.Controllers;
 namespace YellowNotes.Api.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-    public class SimpleAuthorizeAttribute : AuthorizeAttribute
+    internal class SimpleAuthorizeAttribute : AuthorizeAttribute
     {
         public string Devices { get; set; } = string.Empty;
 

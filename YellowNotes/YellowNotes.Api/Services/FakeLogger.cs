@@ -4,7 +4,7 @@ using YellowNotes.Api.Interfaces;
 
 namespace YellowNotes.Api.Services
 {
-    public class FakeLogger : ILogger
+    internal class FakeLogger : ILogger
     {
         public void Error(Exception ex, string additionalInfo = null)
         {

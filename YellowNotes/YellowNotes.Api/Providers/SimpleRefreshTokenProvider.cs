@@ -7,7 +7,7 @@ using YellowNotes.Api.Utils;
 
 namespace YellowNotes.Api.Providers
 {
-    public class SimpleRefreshTokenProvider : AuthenticationTokenProvider
+    internal class SimpleRefreshTokenProvider : AuthenticationTokenProvider
     {
         private readonly ITokenService _tokenService;
 

@@ -1,6 +1,6 @@
 ﻿namespace YellowNotes.Api
 {
-    public class ApiConstants
+    internal class ApiConstants
     {
         public const string ClaimDevice = "ClaimDevice";
     }

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YellowNotes.Dto
+namespace YellowNotes.Api.Models
 {
-    public class UserDto
+    internal class UserModel
     {
         [Required]
         public string UserName { get; set; }

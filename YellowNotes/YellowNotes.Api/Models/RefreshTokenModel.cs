@@ -2,7 +2,7 @@ using System;
 
 namespace YellowNotes.Api.Models
 {
-    public class RefreshTokenModel
+    internal class RefreshTokenModel
     {
         public string UserName { get; set; }
 

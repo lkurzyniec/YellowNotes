@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using YellowNotes.Api.Interfaces;
-using YellowNotes.Dto;
+using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Services
 {
-    public class AuthService : IAuthService
+    internal class AuthService : IAuthService
     {
-        private static readonly Dictionary<string, UserDto> Users =
-            new Dictionary<string, UserDto>
+        private static readonly Dictionary<string, UserModel> Users =
+            new Dictionary<string, UserModel>
             {
-                ["lkurzyniec"] = new UserDto { FirstName = "Łukasz", LastName = "Kurzyniec", UserName = "lkurzyniec", Password = "D7IFNjmsmNjrFNmrJpSxnEQBf9h/LLgUsuOI+fWuyc0=" },  //wieza132
-                ["jkowalski"] = new UserDto { FirstName = "Jan", LastName = "Kowalski", UserName = "jkowalski", Password = "7NcYcNGWMxapfjrDQIyYNa2M8PPBvHA1J8MCZVNPda4=" },        //test123
+                ["lkurzyniec"] = new UserModel { FirstName = "Łukasz", LastName = "Kurzyniec", UserName = "lkurzyniec", Password = "D7IFNjmsmNjrFNmrJpSxnEQBf9h/LLgUsuOI+fWuyc0=" },  //wieza132
+                ["jkowalski"] = new UserModel { FirstName = "Jan", LastName = "Kowalski", UserName = "jkowalski", Password = "7NcYcNGWMxapfjrDQIyYNa2M8PPBvHA1J8MCZVNPda4=" },        //test123
             };
 
-        public bool AuthenticateUser(string userName, string password, out UserDto user)
+        public bool AuthenticateUser(string userName, string password, out UserModel user)
         {
             if (!Users.TryGetValue(userName, out user))
             {

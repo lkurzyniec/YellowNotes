@@ -2,7 +2,7 @@
 
 namespace YellowNotes.Api.Utils
 {
-    public class AppConfiguration
+    internal class AppConfiguration
     {
         public static int AccessTokenExpireTimeInMin = GetInt("AccessTokenExpireTimeInMin", 5);
 

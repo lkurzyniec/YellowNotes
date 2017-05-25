@@ -6,7 +6,7 @@ using YellowNotes.Api.Utils;
 
 namespace YellowNotes.Api.Providers
 {
-    public class CorsProvider
+    internal class CorsProvider
     {
         private static readonly string _allowedOrgins = AppConfiguration.CorsPolicyOrigins;
         private static readonly CorsPolicy _corsPolicy = new CorsPolicy { AllowAnyMethod = true, AllowAnyHeader = true };

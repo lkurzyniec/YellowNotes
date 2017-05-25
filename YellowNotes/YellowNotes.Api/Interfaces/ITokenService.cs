@@ -2,7 +2,7 @@ using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Interfaces
 {
-    public interface ITokenService
+    internal interface ITokenService
     {
         void SaveRefreshToken(RefreshTokenModel refreshToken);
         RefreshTokenModel GetRefreshToken(string hashedToken);

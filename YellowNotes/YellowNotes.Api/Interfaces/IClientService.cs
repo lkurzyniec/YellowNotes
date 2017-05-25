@@ -2,7 +2,7 @@ using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Interfaces
 {
-    public interface IClientService
+    internal interface IClientService
     {
         ClientModel GetClient(string clientId);
     }

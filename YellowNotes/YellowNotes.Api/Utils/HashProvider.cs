@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace YellowNotes.Api.Utils
 {
-    public class HashProvider
+    internal class HashProvider
     {
         public static string Get(string input)
         {

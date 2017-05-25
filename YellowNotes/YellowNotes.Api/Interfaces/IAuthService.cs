@@ -1,9 +1,10 @@
-﻿using YellowNotes.Dto;
+﻿using YellowNotes.Api.Models;
+using YellowNotes.Dto;
 
 namespace YellowNotes.Api.Interfaces
 {
-    public interface IAuthService
+    internal interface IAuthService
     {
-        bool AuthenticateUser(string userName, string password, out UserDto user);
+        bool AuthenticateUser(string userName, string password, out UserModel user);
     }
 }

@@ -5,7 +5,7 @@ using System.Web.Http.Filters;
 
 namespace YellowNotes.Api.Attributes
 {
-    public class ValidateModelStateAttribute : ActionFilterAttribute
+    internal class ValidateModelStateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {

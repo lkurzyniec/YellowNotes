@@ -193,6 +193,7 @@
     <Compile Include="Interfaces\ITokenService.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\RefreshTokenModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CorsProvider.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />

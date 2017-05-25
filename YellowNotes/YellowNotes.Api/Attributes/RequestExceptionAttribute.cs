@@ -3,7 +3,7 @@ using YellowNotes.Api.Controllers;
 
 namespace YellowNotes.Api.Attributes
 {
-    public class RequestExceptionAttribute : ExceptionFilterAttribute
+    internal class RequestExceptionAttribute : ExceptionFilterAttribute
     {
         public override void OnException(HttpActionExecutedContext actionContext)
         {

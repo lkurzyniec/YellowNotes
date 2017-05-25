@@ -8,7 +8,7 @@ using System.Web.Http.Filters;
 namespace YellowNotes.Api.Attributes
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class CheckModelForNullAttribute : ActionFilterAttribute
+    internal class CheckModelForNullAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {

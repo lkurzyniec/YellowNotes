@@ -1,6 +1,6 @@
 namespace YellowNotes.Api.Models
 {
-    public class ClientModel
+    internal class ClientModel
     {
         public string ClientId { get; set; }
 
