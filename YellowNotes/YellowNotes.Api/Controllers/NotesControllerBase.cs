@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
 using YellowNotes.Api.Interfaces;

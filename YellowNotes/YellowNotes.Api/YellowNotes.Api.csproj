@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\ActionParametersValidationAttribute.cs" />
     <Compile Include="Attributes\RequestExceptionAttribute.cs" />
     <Compile Include="Attributes\ResponseHttpStatusCodeAttribute.cs" />
     <Compile Include="Attributes\SimpleAuthorizeAttribute.cs" />

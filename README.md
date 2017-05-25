@@ -23,6 +23,7 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 * Basic validation (via [DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) attributes)
 * ModelState validation ([ValidateModelStateAttribute](YellowNotes/YellowNotes.Api/Attributes/ValidateModelStateAttribute.cs))
 * Model empty validation ([CheckModelForNullAttribute](YellowNotes/YellowNotes.Api/Attributes/CheckModelForNullAttribute.cs))
+* Action parameters validation ([ActionParametersValidationAttribute](YellowNotes/YellowNotes.Api/Attributes/ActionParametersValidationAttribute.cs))
 
 ## 3. Authentication and authorization
 * Access Token (OAuth bearer token authentication using OWIN middleware) ([SimpleAuthorizationServerProvider](YellowNotes/YellowNotes.Api/Providers/SimpleAuthorizationServerProvider.cs))

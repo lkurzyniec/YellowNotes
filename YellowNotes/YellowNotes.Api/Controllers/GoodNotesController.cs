@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -74,6 +75,7 @@ namespace YellowNotes.Api.Controllers
         /// <returns></returns>
         [HttpPut, Route("{id}")]
         [ResponseHttpStatusCode(HttpStatusCode.OK, HttpStatusCode.NotFound)]
+        [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, [FromBody]NoteDto note)
         {
             NoteDto dbNote;
@@ -95,6 +97,7 @@ namespace YellowNotes.Api.Controllers
         /// <returns></returns>
         [HttpDelete, Route("{id}")]
         [ResponseHttpStatusCode(HttpStatusCode.OK, HttpStatusCode.NotFound)]
+        [ResponseType(typeof(void))]
         public IHttpActionResult Delete(int id)
         {
             if (!Notes.ContainsKey(id))
@@ -104,6 +107,20 @@ namespace YellowNotes.Api.Controllers
             
             Notes.Remove(id);
             return Ok();
+        }
+
+        /// <summary>
+        /// Search through Content of Notes
+        /// </summary>
+        /// <param name="text">Text to search</param>
+        /// <returns>List of Note objects</returns>
+        [HttpGet, Route("search/{text}")]
+        [ResponseHttpStatusCode(HttpStatusCode.OK)]
+        [ResponseType(typeof(IEnumerable<NoteDto>))]
+        [ActionParametersValidation]
+        public IHttpActionResult Search([RegularExpression(@"^.{3,}$")] string text)
+        {
+            return Ok(Notes.Values.Where(x => x.Content.Contains(text)));
         }
     }
 }
