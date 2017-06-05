@@ -32,7 +32,7 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 * Authentication Ticket custom property
 * Custom claim
 * Refresh Token ([SimpleRefreshTokenProvider](YellowNotes/YellowNotes.Api/Providers/SimpleRefreshTokenProvider.cs))
-* Custom Authorize attribute ([SimpleAuthorize](YellowNotes/YellowNotes.Api/Attributes/SimpleAuthorizeAttribute.cs))
+* Custom Authorize attribute ([SimpleAuthorizeAttribute](YellowNotes/YellowNotes.Api/Attributes/SimpleAuthorizeAttribute.cs))
 
 ## 4. Documentation
 * Help Pages (via [Microsoft.AspNet.WebApi.HelpPage](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.HelpPage/) nuget package)
