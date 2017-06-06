@@ -2,7 +2,7 @@
 Sample ASP.NET Web API project with OAuth authentication and many other extensions.
 
 ## Table of contents
-1. [The basics of API (CRUD)](#1-the-basics-of-api)
+1. [The basics of API (CRUD)](#1-the-basics-of-api-goodnotescontroller)
 2. [Validation](#2-validation)
 3. [Authentication and authorization](#3-authentication-and-authorization)
 4. [Documentation](#4-documentation)
