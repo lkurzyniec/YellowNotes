@@ -13,7 +13,7 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 
 ---
 
-## 1. The basics of API
+## 1. The basics of API ([GoodNotesController](YellowNotes/YellowNotes.Api/Controllers/GoodNotesController.cs))
 * Create -> Post
 * Read -> Get
 * Update -> Put
