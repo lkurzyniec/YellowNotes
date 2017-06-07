@@ -74,7 +74,7 @@ namespace YellowNotes.Api.Controllers
         /// <param name="note">Note object</param>
         /// <returns></returns>
         [HttpPut, Route("{id}")]
-        [ResponseHttpStatusCode(HttpStatusCode.OK, HttpStatusCode.NotFound)]
+        [ResponseHttpStatusCode(HttpStatusCode.NoContent, HttpStatusCode.NotFound)]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, [FromBody]NoteDto note)
         {
@@ -87,7 +87,7 @@ namespace YellowNotes.Api.Controllers
             dbNote.Title = note.Title;
             dbNote.Content = note.Content;
             dbNote.Rank = note.Rank;
-            return Ok();
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace YellowNotes.Api.Controllers
         /// <param name="id">Note ID</param>
         /// <returns></returns>
         [HttpDelete, Route("{id}")]
-        [ResponseHttpStatusCode(HttpStatusCode.OK, HttpStatusCode.NotFound)]
+        [ResponseHttpStatusCode(HttpStatusCode.NoContent, HttpStatusCode.NotFound)]
         [ResponseType(typeof(void))]
         public IHttpActionResult Delete(int id)
         {
@@ -106,7 +106,7 @@ namespace YellowNotes.Api.Controllers
             }
             
             Notes.Remove(id);
-            return Ok();
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         /// <summary>
