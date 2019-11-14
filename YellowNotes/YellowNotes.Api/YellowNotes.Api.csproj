@@ -176,6 +176,7 @@
     <Compile Include="Interfaces\IAuthService.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
     <Compile Include="Interfaces\ITokenService.cs" />
+    <Compile Include="Middlewares\CorrelationIdHeaderRewriterMiddleware.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\RefreshTokenModel.cs" />
     <Compile Include="Models\UserModel.cs" />

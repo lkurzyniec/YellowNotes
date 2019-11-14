@@ -5,6 +5,7 @@ using System.Web.Routing;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using YellowNotes.Api.Middlewares;
 using YellowNotes.Api.Providers;
 using YellowNotes.Api.Services;
 using YellowNotes.Api.Utils;
@@ -26,6 +27,8 @@ namespace YellowNotes.Api
 
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
+
+            app.UseCorrelationIdHeaderRewriterMiddleware();
 
             app.UseWebApi(config);
         }
