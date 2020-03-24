@@ -105,5 +105,5 @@ I'm trying to follow GitHub Flow process, so please follow this rules:
 
 ## 8. Useful links
 
-* http://www.restapitutorial.com/httpstatuscodes.html
-* http://racksburg.com/choosing-an-http-status-code
+* HTTP Status Codes: http://www.restapitutorial.com/httpstatuscodes.html
+* Choosing an HTTP Status Code: ~~http://racksburg.com/choosing-an-http-status-code~~ https://www.ruilog.com/notebook/view/f21862318f93.html
