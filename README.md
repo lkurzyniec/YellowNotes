@@ -58,33 +58,33 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 
 ### Token generation
 
-![Token generation](http://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-token-generation.png "Token generation")
+![Token generation](//kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-token-generation.png "Token generation")
 
 ### Access to resource denied
 
-![Access denied](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-denied.png "Access denied")
+![Access denied](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-denied.png "Access denied")
 
 ### Access to resource granted
 
-![Access granted](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-granted.png "Access granted")
+![Access granted](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-granted.png "Access granted")
 
 ### Refresh Token utilise
 
-![Refresh Token utilise](http://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-refresh-token.png "Refresh Token utilise")
+![Refresh Token utilise](//kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-refresh-token.png "Refresh Token utilise")
 
 ### Model validation
 
-![Model empty validation](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-model-empty.png "Model empty validation")
+![Model empty validation](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-model-empty.png "Model empty validation")
 
 ### CORS (Cross-Origin Resource Sharing)
 
-![CORS](http://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-cors.png "CORS")
+![CORS](//kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-cors.png "CORS")
 
 ### Documentation Help Pages
 
-![Help Pages](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-help-pages.png "Help Pages")
+![Help Pages](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-help-pages.png "Help Pages")
 
-![HTTP Status Codes](http://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-http-statuses.png "HTTP Status Codes")
+![HTTP Status Codes](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-http-statuses.png "HTTP Status Codes")
 
 ---
 
@@ -96,7 +96,7 @@ I'm trying to follow GitHub Flow process, so please follow this rules:
 
 * Make changes on feature branch.
 * Commit messages should be clear and as much as possible descriptive.
-* Rebase if required.
+* Rebase when required.
 * Make sure that your code compile and run locally.
 * Push your feature branch to GitHub.
 * Create pull request.
@@ -105,5 +105,5 @@ I'm trying to follow GitHub Flow process, so please follow this rules:
 
 ## 8. Useful links
 
-* HTTP Status Codes: http://www.restapitutorial.com/httpstatuscodes.html
+* HTTP Status Codes: https://www.restapitutorial.com/httpstatuscodes.html
 * Choosing an HTTP Status Code: ~~http://racksburg.com/choosing-an-http-status-code~~ https://www.ruilog.com/notebook/view/f21862318f93.html
