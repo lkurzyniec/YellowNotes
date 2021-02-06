@@ -58,33 +58,33 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 
 ### Token generation
 
-![Token generation](//kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-token-generation.png "Token generation")
+![Token generation](https://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-token-generation.png "Token generation")
 
 ### Access to resource denied
 
-![Access denied](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-denied.png "Access denied")
+![Access denied](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-denied.png "Access denied")
 
 ### Access to resource granted
 
-![Access granted](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-granted.png "Access granted")
+![Access granted](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-granted.png "Access granted")
 
 ### Refresh Token utilise
 
-![Refresh Token utilise](//kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-refresh-token.png "Refresh Token utilise")
+![Refresh Token utilise](https://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-refresh-token.png "Refresh Token utilise")
 
 ### Model validation
 
-![Model empty validation](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-model-empty.png "Model empty validation")
+![Model empty validation](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-model-empty.png "Model empty validation")
 
 ### CORS (Cross-Origin Resource Sharing)
 
-![CORS](//kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-cors.png "CORS")
+![CORS](https://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-cors.png "CORS")
 
 ### Documentation Help Pages
 
-![Help Pages](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-help-pages.png "Help Pages")
+![Help Pages](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-help-pages.png "Help Pages")
 
-![HTTP Status Codes](//kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-http-statuses.png "HTTP Status Codes")
+![HTTP Status Codes](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-http-statuses.png "HTTP Status Codes")
 
 ---
 
