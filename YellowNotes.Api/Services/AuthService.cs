@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
-using YellowNotes.Api.Interfaces;
+using System.Collections.Generic;
 using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Services
 {
+    internal interface IAuthService
+    {
+        bool AuthenticateUser(string userName, string password, out UserModel user);
+    }
+
     internal class AuthService : IAuthService
     {
         private static readonly Dictionary<string, UserModel> Users =
@@ -19,7 +23,7 @@ namespace YellowNotes.Api.Services
             {
                 return false;
             }
-            
+
             if (user.Password != password)
             {
                 return false;

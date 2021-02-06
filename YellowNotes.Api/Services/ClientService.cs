@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
-using YellowNotes.Api.Interfaces;
+using System.Collections.Generic;
 using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Services
 {
+    internal interface IClientService
+    {
+        ClientModel GetClient(string clientId);
+    }
+
     internal class ClientService : IClientService
     {
         private static readonly Dictionary<string, ClientModel> Clients =

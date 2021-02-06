@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
-using YellowNotes.Api.Interfaces;
+using YellowNotes.Api.Services;
 using YellowNotes.Api.Utils;
 
 namespace YellowNotes.Api.Providers

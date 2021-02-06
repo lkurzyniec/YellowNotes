@@ -1,11 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using YellowNotes.Api.Interfaces;
 using YellowNotes.Api.Models;
 
 namespace YellowNotes.Api.Services
 {
+    internal interface ITokenService
+    {
+        RefreshTokenModel GetRefreshToken(string hashedToken);
+        void RemoveExpiredRefreshTokens(string userName);
+        void RemoveRefreshToken(string hashedToken);
+        void SaveRefreshToken(RefreshTokenModel refreshToken);
+    }
+
     internal class TokenService : ITokenService
     {
         private static readonly List<RefreshTokenModel> RefreshTokens = new List<RefreshTokenModel>();

@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using YellowNotes.Api.Attributes;
-using YellowNotes.Dto;
+using YellowNotes.Api.Repositories;
+using YellowNotes.Api.Services;
+using YellowNotes.Api.Dto;
 
 namespace YellowNotes.Api.Controllers
 {
@@ -17,6 +19,12 @@ namespace YellowNotes.Api.Controllers
     [RoutePrefix("api/good-notes")]
     public class GoodNotesController : NotesControllerBase
     {
+        public GoodNotesController(INotesRepository notesRepository, ILogger logger)
+            : base(notesRepository, logger)
+        {
+
+        }
+
         /// <summary>
         /// Returns a list of the Note objects
         /// </summary>

@@ -1,30 +1,27 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web.Http;
-using YellowNotes.Api.Interfaces;
+using YellowNotes.Api.Repositories;
 using YellowNotes.Api.Services;
-using YellowNotes.Dto;
+using YellowNotes.Api.Dto;
 
 namespace YellowNotes.Api.Controllers
 {
     public abstract class NotesControllerBase : ApiController
     {
         private readonly ClaimsIdentity _claimsIdentity;
+        private readonly INotesRepository _notesRepository;
 
-        protected NotesControllerBase()
+        protected NotesControllerBase(INotesRepository notesRepository, ILogger logger)
         {
             _claimsIdentity = RequestContext.Principal.Identity as ClaimsIdentity;
-            Logger = new FakeLogger();
+            Logger = logger;
+            _notesRepository = notesRepository;
         }
 
-        protected static readonly Dictionary<int, NoteDto> Notes =
-            new Dictionary<int, NoteDto>
-            {
-                [1] = new NoteDto {Id = 1, Title = "Title 1", Content = "Content 1", CreatedAt = "DB"},
-                [2] = new NoteDto {Id = 2, Title = "Title 2", Content = "Content 2", CreatedAt = "DB"},
-            };
-
         internal ILogger Logger { get; }
+
+        protected Dictionary<int, NoteDto> Notes => _notesRepository.Notes;
 
         protected string Device => _claimsIdentity.IsAuthenticated
             ? _claimsIdentity.FindFirst(ApiConstants.ClaimDevice).Value

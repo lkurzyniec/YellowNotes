@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.Infrastructure;
-using YellowNotes.Api.Interfaces;
 using YellowNotes.Api.Models;
+using YellowNotes.Api.Services;
 using YellowNotes.Api.Utils;
 
 namespace YellowNotes.Api.Providers

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace YellowNotes.Dto
+namespace YellowNotes.Api.Dto
 {
     /// <summary>
     /// Base Dto object

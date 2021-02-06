@@ -1,10 +1,14 @@
-﻿using System;
+using System;
 using System.Diagnostics;
-using YellowNotes.Api.Interfaces;
 
 namespace YellowNotes.Api.Services
 {
-    internal class FakeLogger : ILogger
+    public interface ILogger
+    {
+        void Error(Exception ex, string additionalInfo = null);
+    }
+
+    public class FakeLogger : ILogger
     {
         public void Error(Exception ex, string additionalInfo = null)
         {

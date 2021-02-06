@@ -1,14 +1,22 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
-using YellowNotes.Dto;
+using YellowNotes.Api.Repositories;
+using YellowNotes.Api.Services;
+using YellowNotes.Api.Dto;
 
 namespace YellowNotes.Api.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     public class BadNotesController : NotesControllerBase
     {
+        public BadNotesController(INotesRepository notesRepository, ILogger logger)
+            : base(notesRepository, logger)
+        {
+
+        }
+
         // GET: api/BadNotes
         [AllowAnonymous]
         public IEnumerable<NoteDto> Get()

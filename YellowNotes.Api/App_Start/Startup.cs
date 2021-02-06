@@ -1,7 +1,5 @@
-﻿using System;
+using System;
 using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Routing;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -19,21 +17,18 @@ namespace YellowNotes.Api
         public void Configuration(IAppBuilder app)
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalConfiguration.Configure(DependencyConfig.Register);
+            GlobalConfiguration.Configuration.EnsureInitialized();
 
             app.UseCors(CorsProvider.GetCorsOptions());
-            ConfigureOAuth(app);
-
-            HttpConfiguration config = new HttpConfiguration();
-            WebApiConfig.Register(config);
+            UseOAuth(app);
 
             app.UseCorrelationIdHeaderRewriterMiddleware();
 
-            app.UseWebApi(config);
+            app.UseWebApi(GlobalConfiguration.Configuration);
         }
 
-        public void ConfigureOAuth(IAppBuilder app)
+        public void UseOAuth(IAppBuilder app)
         {
             var oAuthServerOptions = new OAuthAuthorizationServerOptions
             {

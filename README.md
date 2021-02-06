@@ -7,10 +7,9 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 1. [The basics of API (CRUD)](#1-the-basics-of-api-goodnotescontroller)
 2. [Validation](#2-validation)
 3. [Authentication and authorization](#3-authentication-and-authorization)
-4. [Documentation](#4-documentation)
-5. [Other](#5-other)
-6. [Samples](#6-samples)
-7. [Useful links](#7-useful-links)
+4. [Other](#4-other)
+5. [Samples](#5-samples)
+6. [Useful links](#6-useful-links)
 
 ---
 
@@ -24,36 +23,31 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 ## 2. Validation
 
 * Basic validation (via [DataAnnotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) attributes)
-* ModelState validation ([ValidateModelStateAttribute](YellowNotes/YellowNotes.Api/Attributes/ValidateModelStateAttribute.cs))
-* Model empty validation ([CheckModelForNullAttribute](YellowNotes/YellowNotes.Api/Attributes/CheckModelForNullAttribute.cs))
-* Action parameters validation ([ActionParametersValidationAttribute](YellowNotes/YellowNotes.Api/Attributes/ActionParametersValidationAttribute.cs))
+* ModelState validation ([ValidateModelStateAttribute](YellowNotes.Api/Attributes/ValidateModelStateAttribute.cs))
+* Model empty validation ([CheckModelForNullAttribute](YellowNotes.Api/Attributes/CheckModelForNullAttribute.cs))
+* Action parameters validation ([ActionParametersValidationAttribute](YellowNotes.Api/Attributes/ActionParametersValidationAttribute.cs))
 
 ## 3. Authentication and authorization
 
-* Access Token (OAuth bearer token authentication using OWIN middleware) ([SimpleAuthorizationServerProvider](YellowNotes/YellowNotes.Api/Providers/SimpleAuthorizationServerProvider.cs))
+* Access Token (OAuth bearer token authentication using OWIN middleware) ([SimpleAuthorizationServerProvider](YellowNotes.Api/Providers/SimpleAuthorizationServerProvider.cs))
 * Client credentials validation
 * Token custom parameter
 * Authentication Ticket custom property
 * Custom claim
-* Refresh Token ([SimpleRefreshTokenProvider](YellowNotes/YellowNotes.Api/Providers/SimpleRefreshTokenProvider.cs))
-* Custom Authorize attribute ([SimpleAuthorizeAttribute](YellowNotes/YellowNotes.Api/Attributes/SimpleAuthorizeAttribute.cs))
+* Refresh Token ([SimpleRefreshTokenProvider](YellowNotes.Api/Providers/SimpleRefreshTokenProvider.cs))
+* Custom Authorize attribute ([SimpleAuthorizeAttribute](YellowNotes.Api/Attributes/SimpleAuthorizeAttribute.cs))
 
-## 4. Documentation
+## 45. Other
 
-* Help Pages (via [Microsoft.AspNet.WebApi.HelpPage](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.HelpPage/) nuget package)
-* Multiple XML documentation (XML comments beyond the main project)
-* HTTP Status Codes (attribute to generate HTTP response codes in documentation) ([ResponseHttpStatusCodeAttribute](YellowNotes/YellowNotes.Api/Attributes/ResponseHttpStatusCodeAttribute.cs))
-* Output Cache profile
-
-## 5. Other
-
-* API exceptions handling ([RequestExceptionAttribute](YellowNotes/YellowNotes.Api/Attributes/RequestExceptionAttribute.cs))
-* Working CORS (Cross-Origin Resource Sharing) implementation ([CorsProvider](YellowNotes/YellowNotes.Api/Providers/CorsProvider.cs))
-* Simple Owin middleware to rewrite header from request to response  ([CorrelationIdHeaderRewriterMiddleware](YellowNotes/YellowNotes.Api/Middlewares/CorrelationIdHeaderRewriterMiddleware.cs))
+* Dependency Injection with Autofac ([DependencyConfig](YellowNotes.Api/App_Start/DependencyConfig.cs))
+* API documentation page with Swagger ([SwaggerConfig](YellowNotes.Api/App_Start/SwaggerConfig.cs))
+* API exceptions handling ([RequestExceptionAttribute](YellowNotes.Api/Attributes/RequestExceptionAttribute.cs))
+* Working CORS (Cross-Origin Resource Sharing) implementation ([CorsProvider](YellowNotes.Api/Providers/CorsProvider.cs))
+* Simple Owin middleware to rewrite header from request to response  ([CorrelationIdHeaderRewriterMiddleware](YellowNotes.Api/Middlewares/CorrelationIdHeaderRewriterMiddleware.cs))
 
 ---
 
-## 6. Samples
+## 5. Samples
 
 ### Token generation
 
@@ -79,15 +73,13 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 
 ![CORS](.assets/yellownotes-cors.png "CORS")
 
-### Documentation Help Pages
+### API Documentation page
 
-![Help Pages](.assets/yellownotes-help-pages.png "Help Pages")
-
-![HTTP Status Codes](.assets/yellownotes-http-statuses.png "HTTP Status Codes")
+![API documentation page](.assets/yellownotes-help-pages.png "API docs page")
 
 ---
 
-## 7. Useful links
+## 6. Useful links
 
 * HTTP Status Codes: https://www.restapitutorial.com/httpstatuscodes.html
 * Choosing an HTTP Status Code: ~~http://racksburg.com/choosing-an-http-status-code~~ https://www.ruilog.com/notebook/view/f21862318f93.html
