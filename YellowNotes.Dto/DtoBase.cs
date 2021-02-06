@@ -1,7 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace YellowNotes.Dto
 {
+    /// <summary>
+    /// Base Dto object
+    /// </summary>
     public abstract class DtoBase
     {
         /// <summary>
