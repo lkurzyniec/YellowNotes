@@ -5,13 +5,12 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 ## Table of contents
 
 1. [The basics of API (CRUD)](#1-the-basics-of-api-goodnotescontroller)
-1. [Validation](#2-validation)
-1. [Authentication and authorization](#3-authentication-and-authorization)
-1. [Documentation](#4-documentation)
-1. [Other](#5-other)
-1. [Samples and Examples](#6-samples-and-examples)
-1. [Contributing](#7-contributing)
-1. [Useful links](#8-useful-links)
+2. [Validation](#2-validation)
+3. [Authentication and authorization](#3-authentication-and-authorization)
+4. [Documentation](#4-documentation)
+5. [Other](#5-other)
+6. [Samples](#6-samples)
+7. [Useful links](#7-useful-links)
 
 ---
 
@@ -54,56 +53,41 @@ Sample ASP.NET Web API project with OAuth authentication and many other extensio
 
 ---
 
-## 6. Samples and Examples
+## 6. Samples
 
 ### Token generation
 
-![Token generation](https://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-token-generation.png "Token generation")
+![Token generation](.assets/yellownotes-token-generation.png "Token generation")
 
 ### Access to resource denied
 
-![Access denied](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-denied.png "Access denied")
+![Access denied](.assets/yellownotes-access-denied.png "Access denied")
 
 ### Access to resource granted
 
-![Access granted](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-access-granted.png "Access granted")
+![Access granted](.assets/yellownotes-access-granted.png "Access granted")
 
 ### Refresh Token utilise
 
-![Refresh Token utilise](https://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-refresh-token.png "Refresh Token utilise")
+![Refresh Token utilise](.assets/yellownotes-refresh-token.png "Refresh Token utilise")
 
 ### Model validation
 
-![Model empty validation](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-model-empty.png "Model empty validation")
+![Model empty validation](.assets/yellownotes-model-empty.png "Model empty validation")
 
 ### CORS (Cross-Origin Resource Sharing)
 
-![CORS](https://kurzyniec.pl/wp-content/uploads/2017/03/yellownotes-cors.png "CORS")
+![CORS](.assets/yellownotes-cors.png "CORS")
 
 ### Documentation Help Pages
 
-![Help Pages](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-help-pages.png "Help Pages")
+![Help Pages](.assets/yellownotes-help-pages.png "Help Pages")
 
-![HTTP Status Codes](https://kurzyniec.pl/wp-content/uploads/2016/12/yellownotes-http-statuses.png "HTTP Status Codes")
-
----
-
-## 7. Contributing
-
-You are very welcome to submit either issues or pull requests to this repository!
-
-I'm trying to follow GitHub Flow process, so please follow this rules:
-
-* Make changes on feature branch.
-* Commit messages should be clear and as much as possible descriptive.
-* Rebase when required.
-* Make sure that your code compile and run locally.
-* Push your feature branch to GitHub.
-* Create pull request.
+![HTTP Status Codes](.assets/yellownotes-http-statuses.png "HTTP Status Codes")
 
 ---
 
-## 8. Useful links
+## 7. Useful links
 
 * HTTP Status Codes: https://www.restapitutorial.com/httpstatuscodes.html
 * Choosing an HTTP Status Code: ~~http://racksburg.com/choosing-an-http-status-code~~ https://www.ruilog.com/notebook/view/f21862318f93.html
