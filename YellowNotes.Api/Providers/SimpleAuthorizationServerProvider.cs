@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using YellowNotes.Api.Interfaces;
-using YellowNotes.Api.Models;
 using YellowNotes.Api.Utils;
 
 namespace YellowNotes.Api.Providers
@@ -20,12 +19,10 @@ namespace YellowNotes.Api.Providers
             _clientService = clientService;
         }
 
-        public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+        public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            string clientId;
-            string clientSecret;
             //looking in Authorization header using Basic scheme
-            if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
+            if (!context.TryGetBasicCredentials(out var clientId, out var clientSecret))
             {
                 //looking as x-www-form-urlencoded
                 context.TryGetFormCredentials(out clientId, out clientSecret);
@@ -33,17 +30,20 @@ namespace YellowNotes.Api.Providers
 
             if (!AuthenticateClient(context, clientId, clientSecret))
             {
-                return;
+                return Task.CompletedTask;
             }
 
             var deviceId = context.Parameters.Get("device");
             context.OwinContext.Set("device", deviceId);
 
             context.Validated();
+            return Task.CompletedTask;
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+            await Task.CompletedTask;
+
             string device = context.OwinContext.Get<string>("device");
             if (!ValidateDevice(device))
             {
@@ -51,8 +51,7 @@ namespace YellowNotes.Api.Providers
                 return;
             }
 
-            UserModel user;
-            if (!_authService.AuthenticateUser(context.UserName, HashProvider.Get(context.Password), out user))
+            if (!_authService.AuthenticateUser(context.UserName, HashProvider.Get(context.Password), out var user))
             {
                 context.SetError("invalid_grant", "user name or password is invalid");
                 return;
@@ -72,7 +71,7 @@ namespace YellowNotes.Api.Providers
             context.Validated(ticket);
         }
 
-        public override async Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)
+        public override Task GrantRefreshToken(OAuthGrantRefreshTokenContext context)
         {
             var originalClient = context.Ticket.Properties.Dictionary["as:client_id"];
             var currentClient = context.ClientId;
@@ -80,7 +79,7 @@ namespace YellowNotes.Api.Providers
             if (originalClient != currentClient)
             {
                 context.SetError("invalid_client_id", "refresh_token issued by different client_id");
-                return;
+                return Task.CompletedTask;
             }
             
             var identity = new ClaimsIdentity(context.Ticket.Identity);
@@ -90,14 +89,18 @@ namespace YellowNotes.Api.Providers
 
             var ticket = new AuthenticationTicket(identity, context.Ticket.Properties);
             context.Validated(ticket);
+
+            return Task.CompletedTask;
         }
 
-        public override async Task TokenEndpoint(OAuthTokenEndpointContext context)
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (var property in context.Properties.Dictionary)
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
+
+            return Task.CompletedTask;
         }
 
         private bool AuthenticateClient(OAuthValidateClientAuthenticationContext context, string clientId, string clientSecret)

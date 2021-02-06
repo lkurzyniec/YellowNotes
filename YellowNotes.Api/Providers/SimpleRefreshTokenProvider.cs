@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.Infrastructure;
 using YellowNotes.Api.Interfaces;
@@ -16,7 +16,7 @@ namespace YellowNotes.Api.Providers
             _tokenService = tokenService;
         }
 
-        public override async Task CreateAsync(AuthenticationTokenCreateContext context)
+        public override Task CreateAsync(AuthenticationTokenCreateContext context)
         {
             string userName = context.Ticket.Identity.Name;
             string clientId = context.Ticket.Properties.Dictionary["as:client_id"];
@@ -37,9 +37,10 @@ namespace YellowNotes.Api.Providers
             context.Ticket.Properties.ExpiresUtc = refreshToken.ExpiresDate;
 
             context.SetToken(token);
+            return Task.CompletedTask;
         }
 
-        public override async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
+        public override Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
             var token = HashProvider.Get(context.Token);
 
@@ -50,6 +51,7 @@ namespace YellowNotes.Api.Providers
                 _tokenService.RemoveRefreshToken(token);
                 _tokenService.RemoveExpiredRefreshTokens(refreshToken.UserName);
             }
+            return Task.CompletedTask;
         }
     }
 }
